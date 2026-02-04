@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Osaka Like a Local - Authentic Walking Tour</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .hero-bg {
+            background: linear-gradient(45deg, #FF6B35, #E85A2A, #FF8C42);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 107, 53, 0.3) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero-emoji {
+            animation: bounce 2s ease infinite;
+        }
+
+        .scroll-indicator {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease;
+        }
+
+        .timeline-card {
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover img {
+            transform: scale(1.05);
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #FF6B35, #FFD700);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 text-gray-900">
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Sticky Booking Button -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-KirLupTnHxhT8ieQtivjXKWx7DrhZaCOPBczIJr2Bp8o8g/viewform" target="_blank" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl z-50 transition-all hover:scale-105 flex items-center gap-3">
+        🎫 Book Now
+    </a>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="hero-bg absolute inset-0"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
+        
+        <div class="relative z-10 max-w-4xl px-6 fade-in-up">
+            <div class="hero-emoji text-8xl mb-6">🏮</div>
+            <h1 class="font-black text-5xl md:text-7xl mb-6 leading-tight drop-shadow-lg">
+                Discover the Real Osaka<br>Beyond Tourist Guides
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-95">
+                90-120 minute adventure through 7 hidden spots with a local guide
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-KirLupTnHxhT8ieQtivjXKWx7DrhZaCOPBczIJr2Bp8o8g/viewform" target="_blank" class="inline-block bg-white text-orange-500 px-12 py-5 rounded-full text-2xl font-bold shadow-2xl hover:scale-105 transition-transform">
+                Book Your Adventure ¥5,000
+            </a>
+            <div class="mt-8 text-base opacity-90">
+                ✅ Free Cancellation | 🗣️ English Supported | 👶 Kids Free
+            </div>
+        </div>
+
+        <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2">
+            <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="stat-card bg-gradient-to-br from-orange-500 to-orange-600 text-white p-12 rounded-3xl shadow-xl text-center">
+                    <div class="text-6xl mb-4">🌍</div>
+                    <div class="text-5xl font-black mb-3" data-count="60">60+</div>
+                    <div class="text-lg opacity-95">Countries<br>Travelers from worldwide</div>
+                </div>
+                <div class="stat-card bg-gradient-to-br from-orange-500 to-orange-600 text-white p-12 rounded-3xl shadow-xl text-center">
+                    <div class="text-6xl mb-4">⭐</div>
+                    <div class="text-5xl font-black mb-3">4.9<span class="text-2xl">/5.0</span></div>
+                    <div class="text-lg opacity-95">Rating<br>Based on 98 reviews</div>
+                </div>
+                <div class="stat-card bg-gradient-to-br from-orange-500 to-orange-600 text-white p-12 rounded-3xl shadow-xl text-center">
+                    <div class="text-6xl mb-4">🎌</div>
+                    <div class="text-5xl font-black mb-3" data-count="500">500+</div>
+                    <div class="text-lg opacity-95">Happy Guests<br>Tours completed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Timeline - Modern Gallery -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-4 text-gray-900">🗺️ Your 90-120 Minute Adventure Story</h2>
+            <p class="text-xl text-center text-gray-600 mb-16">From Tsutenkaku to Dotonbori - 7 hidden gems await</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: Montana Flat -->
+                <div class="timeline-card bg-white rounded-3xl overflow-hidden shadow-lg">
+                    <div class="relative overflow-hidden">
+                        <div class="aspect-square bg-gray-200">
+                            <img 
 
